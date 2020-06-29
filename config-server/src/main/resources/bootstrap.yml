@@ -1,0 +1,26 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          #配置的git仓库位置
+          uri: http://git.oschina.net/didispace/SpringBoot-Learning/
+          #/{label}/{application}-{profile}.properties中{label}对应的git的分支
+          default-label: master
+          #仓库路径下的相对搜索位置，可以配置多个
+          search-paths: Chapter9-1-4/config-repo
+          #访问git仓库的用户名
+          username: username
+          #访问git仓库的用户密码
+          password: password
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:9001/eureka/,http://peer2:9002/eureka/
